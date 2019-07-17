@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test">
+
+    <!-- 根据主键id查询对应的记录 -->
+    <select id="findUserById" parameterType="int" resultType="UserInfo">
+        SELECT * FROM userinfo WHERE id = #{value}
+    </select>
+
+    <!-- 根据账户name查询对应的记录 -->
+    <select id="findUserByName" parameterType="String" resultType="UserInfo">
+        SELECT * FROM userinfo WHERE user_name = #{value}
+    </select>
+
+    <!-- 查询数据库所有数据 -->
+    <select id="findAllUser" resultType="UserInfo">
+        SELECT * FROM userinfo
+    </select>
+
+    <!-- 根据id修改name的值 -->
+    <update id="updateUserInfoName" parameterType="com.example.demo.bean.UserInfo">
+        UPDATE userinfo SET user_name=#{user_name},password=#{password} WHERE id=#{id}
+    </update>
+
+    <!-- 添加用户信息 -->
+    <insert id="insertUserInfo" parameterType="com.example.demo.bean.UserInfo">
+        INSERT INTO userinfo(user_name,password) VALUES (#{user_name},#{password})
+    </insert>
+
+    <!-- 根据指定ID删除用户信息 -->
+    <delete id="deleteUserInfo" parameterType="int">
+        DELETE FROM userinfo WHERE id=#{id}
+    </delete>
+
+</mapper>
