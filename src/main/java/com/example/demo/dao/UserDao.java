@@ -32,7 +32,6 @@ public class UserDao extends BaseDao {
             System.err.println("数据库中未存在第" + id + "条数据");
             return;
         }
-        System.err.println("ID为" + id + "的数据是:" + user.toString());
         //释放资源
         sqlSession.close();
     }
@@ -51,7 +50,6 @@ public class UserDao extends BaseDao {
             System.err.println("数据库中未存在这个用户的数据");
             return user;
         }
-        System.err.println("name为" + name + "的数据是:" + user.toString());
         //释放资源
         sqlSession.close();
         return user;
@@ -70,7 +68,6 @@ public class UserDao extends BaseDao {
             System.err.println("数据库中未存在此条数据");
             return;
         }
-        System.err.println("数据库所有数据为:" + userList.toString());
         sqlSession.close();
     }
 
@@ -88,7 +85,6 @@ public class UserDao extends BaseDao {
         sqlSession.insert("test.updateUserInfoName", user);
         sqlSession.commit();
         sqlSession.close();
-        System.err.println("修改成功");
         return user;
     }
 

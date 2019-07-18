@@ -33,7 +33,7 @@ public class UserController {
             defaultValue = "") String name, @RequestParam(name = "password",
             required = true,
             defaultValue = "") String password) {
-        System.out.println("name:" + name + ",password:" + password);
+        System.out.println("用户登录,请求过来的数据--->  name:" + name + ",password:" + password);
         JSONObject jsonObject = new JSONObject();
         String code = "";
         String msg = "";
@@ -79,7 +79,7 @@ public class UserController {
             defaultValue = "") String name, @RequestParam(name = "password",
             required = true,
             defaultValue = "") String password) {
-        System.out.println("name:" + name + ",password:" + password);
+        System.out.println("用户注册,请求过来的数据--->   name:" + name + ",password:" + password);
         JSONObject jsonObject = new JSONObject();
         String code = "";
         String msg = "";
@@ -133,7 +133,7 @@ public class UserController {
             required = true,
             defaultValue = "") String resetpassword) {
 
-        System.out.println("name:" + name + ",password:" + password + ",resetpassword:" + resetpassword);
+        System.out.println("用户重置密码,请求过来的数据--->   name:" + name + ",password:" + password + ",resetpassword:" + resetpassword);
         JSONObject jsonObject = new JSONObject();
         String code = "";
         String msg = "";
@@ -143,6 +143,9 @@ public class UserController {
         } else if (resetpassword.length() < 6) {
             code = "101";
             msg = "重置失败,新密码不能小于6位";
+        } else if (password.equals(resetpassword)) {
+            code = "101";
+            msg = "重置失败,新密码和旧密码不能一样!";
         } else {
             UserInfo userInfo = null;
             try {
